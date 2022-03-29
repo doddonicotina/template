@@ -9,7 +9,7 @@ class Pila{
 
 
     public:
-        Pila(int capacity);
+        Pila(int cap);
         ~Pila();
 
         T pop();
