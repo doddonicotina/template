@@ -35,7 +35,7 @@ T Pila<T>::pop(){
 }
 
 template <typename T>
-void Pila<T>::push(cont T& elem){
+void Pila<T>::push(const T& elem){
     if (size<capacity)
         {
             ptr[size]=elem;
@@ -45,6 +45,11 @@ void Pila<T>::push(cont T& elem){
         {
             cout<<"Pila is full"<<endl;
         }
+}
+
+template <typename T>
+int Pila<T>::getSize(){
+    return size;
 }
 
 #endif

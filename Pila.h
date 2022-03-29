@@ -16,7 +16,7 @@ class Pila{
         Void push(T elemento);
 
         int getSize();
-        bool isFull;
+        bool isFull();
         bool isEmpty();
 
 
