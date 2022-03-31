@@ -1,20 +1,23 @@
 #ifndef __PILA_CPP__
 #define __PILA_CPP__
-
+#include <iostream>
 #include "Pila.h"
-using namespace std;
 
 template <typename T>
 
 Pila <T>::Pila(int cap): capacity(cap), size(0){
-    cout<<"costruttore default"<<endl;
+    std::cout<<"costruttore parametrico \n";
     ptr = new T[capacity];
+    
+    if (!ptr){
+    	std::cout<<"Error allocating memory \n";
+	}
 }
 
 template <typename T>
-Pila <T>::~Pila(){
-    cout<<"distruttore"<<endl;
-    delete ptr:
+Pila<T>::~Pila(){
+    std::cout<<"distruttore \n";
+    delete[] ptr;
     ptr = NULL;
 }
 
@@ -24,18 +27,19 @@ T Pila<T>::pop(){
 
     if (size)
     {
-        elem = ptr[size];
+        elem = ptr[size-1];
         size--;
     }
     else
     {
-        cout<<"Pila is empty"<<endl;
+        std::cout<<"Pila is empty \n";
     }
-
+		return elem;
 }
 
 template <typename T>
 void Pila<T>::push(const T& elem){
+	
     if (size<capacity)
         {
             ptr[size]=elem;
@@ -43,13 +47,31 @@ void Pila<T>::push(const T& elem){
         }
         else
         {
-            cout<<"Pila is full"<<endl;
-        }
+            std::cout<<"Pila is full \n";
+        } 
+        
 }
 
 template <typename T>
 int Pila<T>::getSize(){
     return size;
 }
+
+template <typename T>
+bool Pila<t>::isFull(){
+	if (size==capacity){
+		return true;
+	}
+	return false;
+}
+
+template <typename T>
+bool Pila<t>::isEmpty(){
+	if (size==0){
+		return true;
+	}
+	return false;
+}
+
 
 #endif
